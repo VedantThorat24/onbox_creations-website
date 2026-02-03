@@ -15,10 +15,20 @@
 
 html,
 body {
+  overflow-x: hidden;
   width: 100%;
   height: 100%;
   background-color: var(--backgroundColor);
   color: var(--color);
+}
+#cursor{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color:var(--color);
+  position: absolute;
+  z-index: 99;
+  pointer-events: none;
 }
 
 #main {
@@ -233,11 +243,9 @@ svg {
 }
 
 #map {
-  /* overscroll-behavior: none; */
-  width: 200%;
-  height: 200%;
   display: flex;
-  flex-wrap: nowrap;
+  width: 200vw;   /* 2 full screens */
+  height: 100vh;
   position: relative;
 }
 
@@ -248,6 +256,7 @@ svg {
   transform: translate(10%, 10%);
   z-index: 4;
 }
+
 
 .container {
   width: 100%;
@@ -511,6 +520,7 @@ footer{
 footer svg{
   stroke: var(--color);
   stroke-width: 3px;
+  /* background-color: red; */
 }
 .f-content{
   width: 100%;

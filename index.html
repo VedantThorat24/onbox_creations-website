@@ -17,6 +17,7 @@
 </head>
 
 <body>
+    <div id="cursor"></div>
     <div id="main">
         <div id="hero">
             <nav>
@@ -38,9 +39,9 @@
                 <div class="hero_right ">
                     <h3>From digital design to physical form.</h3>
                     <div class="hero_images">
-                        <img class="img1" src="./images/hero-img1.png" alt="">
-                        <img class="img2" src="./images/hero-img2.png" alt="">
                         <img class="img3" src="./images/hero-img3.png" alt="">
+                        <img class="img2" src="./images/hero-img2.png" alt="">
+                        <img class="img1" src="./images/hero-img1.png" alt="">
                     </div>
                 </div>
             </div>
@@ -57,14 +58,14 @@
                     <h3>Made to order, designed to fit your exact needs.</h3>
                     <h4>Custom Prints</h4>
                 </div>
-                <svg width="10%" height="100%">
+                <svg class="line" width="10%" height="100%">
                     <path d="M 90 100 Q 90 300 90 400" stroke="" fill="transparent" />
                 </svg>
                 <div class="about_section">
                     <h3>Fast iterations to test, refine, and improve ideas.</h3>
                     <h4>Prototyping</h4>
                 </div>
-                <svg width="10%" height="100%">
+                <svg class="line1" width="10%" height="100%">
                     <path d="M 90 100 Q 90 300 90 400" stroke="" fill="transparent" />
                 </svg>
                 <div class="about_section">
@@ -74,7 +75,7 @@
             </div>
             <button>explore<i class="ri-arrow-right-up-line"></i></button>
         </div>
-        <div id="map">
+        <!-- <div id="map">
             <svg width="2828" height="764" viewBox="0 0 2828 764" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M17.2245 427.578C-12.2755 742.078 496.992 821.202 920.224 680.577C1226.55 578.797 1797.22 88.5777 1458.22 71.5777C1119.22 54.5777 1173.22 459.578 1342.72 511.078C1512.22 562.578 1640.05 435.998 1831.22 270.578C2120.72 20.0777 2271.4 -31.2905 2486.73 54.5777C2899.22 219.078 2800.73 570.077 2800.73 570.077"
@@ -101,7 +102,7 @@
                     <h4>The final piece is prepared for handover.</h4>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div id="material">
             <div class="material_title">
                 <h4>see what we offer</h4>
@@ -164,7 +165,7 @@
             </div>
         </div>
         <footer>
-            <svg width="100%" height="160">
+            <svg class="foot" width="100%" height="160">
                 <path d="M 100 100 Q 800 100 1600 100" fill="transparent" />
             </svg>
             <div class="f-content">
@@ -196,6 +197,10 @@
 
         </footer>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+        integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="script.js"></script>
 </body>
 
