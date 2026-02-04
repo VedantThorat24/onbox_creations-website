@@ -1,3 +1,4 @@
+
 function hero() {
     var tl = gsap.timeline()
     document.querySelectorAll(".nav_elem a")
@@ -93,7 +94,7 @@ function about() {
         scrollTrigger: {
             trigger: "#about",
             // markers: true,
-            start: "top 70%",
+            start: "top 30%",
             end: "bottom bottom",
             // scrub: 1
         },
@@ -105,7 +106,7 @@ function about() {
         scrollTrigger: {
             trigger: "#about",
             // markers: true,
-            start: "top 40%",
+            start: "top 50%",
             end: "bottom bottom",
             // scrub: 1
         },
@@ -137,7 +138,6 @@ function about() {
 
 
 // horizontalPage()
-
 function cursor() {
     window.addEventListener("mousemove", function (details) {
         gsap.to("#cursor", {
@@ -178,52 +178,184 @@ function work() {
         });
     });
 }
+function material() {
+    document.querySelectorAll(".element")
+        .forEach(function (e) {
+            e.addEventListener("mousemove", function (details) {
+                gsap.to(this.querySelector(".layer"), {
+                    height: "100%",
+                    duration: .4
+                })
+                gsap.to(this, {
+                    color: " #E9E9E9",
+                    delay: .1
+                })
+                gsap.to(this.querySelector(".picture"), {
+                    opacity: 1,
+                    x: gsap.utils.mapRange(0, window.innerWidth, -200, 200, details.x)
+
+                })
+            })
+            e.addEventListener("mouseleave", function (dets) {
+                gsap.to(this.querySelector(".layer"), {
+                    height: "0%",
+
+                })
+                gsap.to(this, {
+                    color: " #004743",
+                    delay: .2
+                })
+                gsap.to(this.querySelector(".picture"), {
+                    opacity: 0,
+                })
+
+
+            })
+        })
+
+
+    gsap.from(".material_title h4", {
+        scrollTrigger: {
+            trigger: "#material",
+            start: "top 50%",
+            end: "bottom bottom",
+
+        },
+        opacity: 0,
+        scale: 1.5
+    })
+
+    gsap.from(".element h3", {
+        scrollTrigger: {
+            trigger: "#material",
+            start: "top 55%",
+            end: "bottom bottom",
+
+        },
+        opacity: 0,
+        x: -200,
+        ease: "back.out(1.7)",
+    })
+    gsap.from(".element h4", {
+        scrollTrigger: {
+            trigger: "#material",
+            start: "top 55%",
+            end: "bottom bottom",
+
+        },
+        opacity: 0,
+        x: 200,
+        ease: "back.out(1.7)",
+    })
+
+
+
+}
 
 work();
 hero();
 cursor();
 about();
 material();
+workElement();
+function workElement() {
 
+    gsap.from(".work_title h3", {
+        scrollTrigger: {
+            trigger: "#work",
+            start: "top 50%",
+            end: "bottom bottom",
 
-function material(){
-    document.querySelectorAll(".element")
-    .forEach(function(e){
-        e.addEventListener("mousemove",function(details){
-            gsap.to(this.querySelector(".layer"),{
-                height: "100%",
-                duration:.4
-            })
-             gsap.to(this,{
-                  color:" #E9E9E9",
-                  delay:.1
-            })
-            gsap.to(this.querySelector(".picture"), {
-                    opacity: 1,
-                    x: gsap.utils.mapRange(0, window.innerWidth, -200, 200, details.x)
-
-                })
-        })
-        e.addEventListener("mouseleave",function(dets){
-            gsap.to(this.querySelector(".layer"),{
-                height: "0%",
-
-            })
-             gsap.to(this,{
-                  color:" #004743",
-                  delay:.2
-            })
-            gsap.to(this.querySelector(".picture"),{
-                opacity:0,
-            })
-           
-            
-        })
+        },
+        opacity: 0,
+        scale: 1.5
     })
-  
-    const tl = gsap.timeline()
 
 
+    document.querySelectorAll(".images img")
+        .forEach(function (el) {
 
+            el.addEventListener("mouseenter", function () {
+                gsap.to(this, {
+                    opacity: 1,
+                    duration: .3
+                })
+                gsap.to("#cursor", {
+                    scale: 5,
+                    backgroundColor:"#00474394",
+                    duration: 0.3,
+                    ease: "power3.out"
+                });
+
+            })
+            el.addEventListener("mouseleave", function () {
+                gsap.to(this, {
+                    opacity: .2,
+                })
+                gsap.to("#cursor", {
+                    scale: 1,
+                    backgroundColor:"#004743",
+                    duration: 0.3,
+                    ease: "power3.out"
+                });
+            })
+        })
+}
+
+
+function magnet() {
+    const cursor = document.querySelector("#cursor");
+
+    document.querySelectorAll(".magnetic").forEach((el) => {
+
+        // MAGNET MOVE
+        el.addEventListener("mousemove", (e) => {
+            const bounds = el.getBoundingClientRect();
+
+            const x = e.clientX - bounds.left - bounds.width / 2;
+            const y = e.clientY - bounds.top - bounds.height / 2;
+
+            gsap.to(el, {
+                x: x * 0.4,
+                y: y * 0.4,
+                duration: 0.3,
+                ease: "power3.out"
+            });
+        });
+
+        // ENTER
+        el.addEventListener("mouseenter", () => {
+            // cursor scale
+            gsap.to(cursor, {
+                scale: 5,
+                duration: 0.3,
+                ease: "power3.out",
+                backgroundColor:"rgba(0, 116, 85, 0.39)",
+            });
+
+        });
+
+        // LEAVE
+        el.addEventListener("mouseleave", () => {
+            // reset magnet
+            gsap.to(el, {
+                x: 0,
+                y: 0,
+                duration: 0.6,
+                ease: "elastic.out(1, 0.4)"
+            });
+
+            // cursor back
+            gsap.to(cursor, {
+                scale: 1,
+                duration: 0.3,
+                 backgroundColor:"#004743",
+                ease: "power3.out"
+            });
+
+        });
+
+    });
 
 }
+magnet()
