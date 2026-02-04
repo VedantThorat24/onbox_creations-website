@@ -1,5 +1,5 @@
 :root {
-  --backgroundColor: #E9E9E9;
+  --backgroundColor: #e9e9e9;
   --color: #004743;
   --chillax: chillax;
   --gravitas: Gravitas One;
@@ -412,6 +412,8 @@ svg {
   font-size: 3rem;
   margin-bottom: 3px;
   padding: 1.5rem 40px;
+  position: relative;
+  z-index: 2;
 }
 
 .element h4 {
@@ -422,25 +424,36 @@ svg {
   text-align: end;
   margin-bottom: 3px;
   padding: 1.5rem 40px;
+  position: relative;
+  z-index: 2;
 }
 
 .picture {
   position: absolute;
-  width: 230px;
-  height: 230px;
-  background-color: palevioletred;
-  border-radius: 50%;
-  display: none;
+  width: 270px;
+  height: 270px;
+  background-color: rgb(255, 0, 85);
+  border-radius: 35px;
   pointer-events: none;
+  opacity: 0;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  z-index: 2;
+  overflow: hidden;
 }
-
+.picture img{
+  object-fit: cover;
+  width: 270px;
+  height: 270px;
+}
 .layer {
   position: absolute;
   bottom: 0;
-  background-color: #00474353;
+  background-color: var(--color);
   width: 100%;
-  height: 100%;
-  display: none;
+  height: 0%;
+  /* display: none; */
   pointer-events: none;
 }
 

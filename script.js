@@ -30,41 +30,64 @@ function hero() {
 
 }
 function about() {
+    const svg = document.querySelector(".line");
+    const svg1 = document.querySelector(".line1");
+    const pathEl = svg.querySelector("path");
+    const pathEl1 = svg1.querySelector("path");
 
-    var path = `M 90 100 Q 90 300 90 400`
-    var finalPath = `M 90 100 Q 90 300 90 400`
+    const finalPath = "M 90 100 Q 90 300 90 400";
 
-    var line = document.querySelector(".line")
-    var line1 = document.querySelector(".line1")
+    svg.addEventListener("mousemove", (e) => {
+        const bounds = svg.getBoundingClientRect();
 
-    line.addEventListener("mousemove", details => {
-        path = `M 90 100 Q ${(details.x) / 4} ${(details.y) / 4} 90 400`,
-            gsap.to(".line path", {
-                attr: { d: path }
-            })
-    }
-    )
-    line1.addEventListener("mousemove", details => {
-        path = `M 90 100 Q ${(details.x) / 7} ${(details.y) / 7} 90 400`,
-            gsap.to(".line1 path", {
-                attr: { d: path }
-            })
-    }
-    )
-    line.addEventListener("mouseleave", function () {
-        gsap.to(".line path", {
+        // mouse position relative to SVG
+        const x = e.clientX - bounds.left;
+        const y = e.clientY - bounds.top;
+
+        // vertical line bending sideways
+        const path = `M 90 100 Q ${x} 300 90 400`;
+
+        gsap.to(pathEl, {
+            attr: { d: path },
+            duration: 0.2,
+            ease: "power3.out"
+        });
+    });
+
+    svg.addEventListener("mouseleave", () => {
+        gsap.to(pathEl, {
             attr: { d: finalPath },
             duration: 1,
-            ease: "elastic.out(1,0.3)",
-        })
-    })
-    line1.addEventListener("mouseleave", function () {
-        gsap.to(".line1 path", {
+            ease: "elastic.out(1, 0.3)"
+        });
+    });
+
+    //line 2 
+    svg1.addEventListener("mousemove", (e) => {
+        const bounds1 = svg1.getBoundingClientRect();
+
+        // mouse position relative to SVG
+        const x1 = e.clientX - bounds1.left;
+        const y = e.clientY - bounds1.top;
+
+        // vertical line bending sideways
+        const path1 = `M 90 100 Q ${x1} 300 90 400`;
+
+        gsap.to(pathEl1, {
+            attr: { d: path1 },
+            duration: 0.2,
+            ease: "power3.out"
+        });
+    });
+
+    svg1.addEventListener("mouseleave", () => {
+        gsap.to(pathEl1, {
             attr: { d: finalPath },
             duration: 1,
-            ease: "elastic.out(1,0.3)",
-        })
-    })
+            ease: "elastic.out(1, 0.3)"
+        });
+    });
+
 
     gsap.from(".title h5", {
         scrollTrigger: {
@@ -88,14 +111,9 @@ function about() {
         },
         opacity: 0,
         duration: .7,
-        y:200,
+        y: 200,
         ease: "back.out(2.7)",
     })
-
-
-
-
-
 
 }
 // function horizontalPage() {
@@ -120,47 +138,92 @@ function about() {
 
 // horizontalPage()
 
-window.addEventListener("mousemove",function(details){
-    gsap.to("#cursor",{
-        x:details.x,
-        y:details.y,
-        duration:.7,
-        ease: "back.out(3)",
+function cursor() {
+    window.addEventListener("mousemove", function (details) {
+        gsap.to("#cursor", {
+            x: details.x,
+            y: details.y,
+            duration: .7,
+            ease: "back.out(3)",
+        })
     })
-})
-hero()
-about();
-
+}
 function work() {
-  const svg = document.querySelector("footer svg");
-  const pathEl = svg.querySelector("path");
+    const svg = document.querySelector("footer svg");
+    const pathEl = document.querySelector(".foot path");
 
-  const finalPath = "M 100 100 Q 800 100 1600 100";
+    const finalPath = "M 100 100 Q 800 100 1600 100";
 
-  svg.addEventListener("mousemove", (e) => {
-    const bounds = svg.getBoundingClientRect();
+    svg.addEventListener("mousemove", (e) => {
+        const bounds = svg.getBoundingClientRect();
 
-    // mouse position relative to SVG
-    const x = e.clientX - bounds.left;
-    const y = e.clientY - bounds.top;
+        // mouse position relative to SVG
+        const x = e.clientX - bounds.left;
+        const y = e.clientY - bounds.top;
 
-    const path = `M 100 100 Q ${x} ${y} 1600 100`;
+        const path = `M 100 100 Q ${x} ${y} 1600 100`;
 
-    gsap.to(pathEl, {
-      attr: { d: path },
-      duration: 0.2,
-      ease: "power3.out"
+        gsap.to(pathEl, {
+            attr: { d: path },
+            duration: 0.3,
+            ease: "power3.out"
+        });
     });
-  });
 
-  svg.addEventListener("mouseleave", () => {
-    gsap.to(pathEl, {
-      attr: { d: finalPath },
-      duration: 1,
-      ease: "elastic.out(1, 0.3)"
+    svg.addEventListener("mouseleave", () => {
+        gsap.to(pathEl, {
+            attr: { d: finalPath },
+            duration: 1,
+            ease: "elastic.out(1, 0.3)"
+        });
     });
-  });
 }
 
-// 🚨 CALL IT
 work();
+hero();
+cursor();
+about();
+material();
+
+
+function material(){
+    document.querySelectorAll(".element")
+    .forEach(function(e){
+        e.addEventListener("mousemove",function(details){
+            gsap.to(this.querySelector(".layer"),{
+                height: "100%",
+                duration:.4
+            })
+             gsap.to(this,{
+                  color:" #E9E9E9",
+                  delay:.1
+            })
+            gsap.to(this.querySelector(".picture"), {
+                    opacity: 1,
+                    x: gsap.utils.mapRange(0, window.innerWidth, -200, 200, details.x)
+
+                })
+        })
+        e.addEventListener("mouseleave",function(dets){
+            gsap.to(this.querySelector(".layer"),{
+                height: "0%",
+
+            })
+             gsap.to(this,{
+                  color:" #004743",
+                  delay:.2
+            })
+            gsap.to(this.querySelector(".picture"),{
+                opacity:0,
+            })
+           
+            
+        })
+    })
+  
+    const tl = gsap.timeline()
+
+
+
+
+}
