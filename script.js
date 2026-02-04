@@ -1,6 +1,7 @@
 var swiper = new Swiper(".mySwiper", {
       effect: "cards",
       grabCursor: true,
+      rewind:true
     });
 
 function hero() {
@@ -14,11 +15,11 @@ function hero() {
                 ease: "power3.out",
             })
         })
-    document.querySelectorAll(".swiper ")
+    document.querySelectorAll(".swiper")
         .forEach(function (e) {
             tl.from(e, {
                 x: 700,
-                duration: 2,
+                duration: 1,
                 ease: "power3.out",
             }, "-=.9")
         })
