@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>onBox</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,10 +39,19 @@
                 </div>
                 <div class="hero_right ">
                     <h3>From digital design to physical form.</h3>
-                    <div class="hero_images">
-                        <img class="img3" src="./images/hero-img3.png" alt="">
-                        <img class="img2" src="./images/hero-img2.png" alt="">
-                        <img class="img1" src="./images/hero-img1.png" alt="">
+                    <div class="swiper mySwiper">
+
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img class="img1" src="./images/hero-img1.png" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="img2" src="./images/hero-img2.png" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="img3" src="./images/hero-img3.png" alt="">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -197,6 +207,7 @@
 
         </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
         integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>

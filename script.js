@@ -1,3 +1,7 @@
+var swiper = new Swiper(".mySwiper", {
+      effect: "cards",
+      grabCursor: true,
+    });
 
 function hero() {
     var tl = gsap.timeline()
@@ -10,12 +14,11 @@ function hero() {
                 ease: "power3.out",
             })
         })
-    document.querySelectorAll(".hero_images img")
+    document.querySelectorAll(".swiper ")
         .forEach(function (e) {
             tl.from(e, {
                 x: 700,
-                stagger: .009,
-                duration: 1,
+                duration: 2,
                 ease: "power3.out",
             }, "-=.9")
         })
